@@ -1357,6 +1357,649 @@ int main() {
     return 0;
 }
 
+// GCD w and w/o recursion
+#include <stdio.h>
+
+int gcd(int a, int b) {
+    if (b == 0)  
+        return a;            // Base case
+    return gcd(b, a % b);    // Recursive step
+}
+
+int main() {
+    int num1, num2;
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", &num1, &num2);
+
+    int result = gcd(num1, num2);
+
+    printf("GCD of %d and %d is: %d\n", num1, num2, result);
+
+    return 0;
+}
+
+#include <stdio.h>
+
+int main() {
+    int a, b;
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+
+    printf("GCD is: %d\n", a);
+
+    return 0;
+}
+
+// Factorial w and w/o recursion 
+#include <stdio.h>
+
+int factorial(int n) {
+    if (n == 0 || n == 1) {
+        return 1;
+    return n * factorial(n - 1);
+}
+
+int main() {
+    int num;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    if (num < 0)
+        printf("Factorial is not defined for negative numbers.\n");
+    else
+        printf("Factorial of %d is: %d\n", num, factorial(num));
+    return 0;
+}
+#include <stdio.h>
+
+int main() {
+    int num, factorial = 1;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    if (num < 0) {
+        printf("Factorial is not defined for negative numbers.\n");
+    } 
+    else {
+        for (int i = 1; i <= num; i++) {
+            factorial *= i;
+        }
+        printf("Factorial of %d is: %d\n", num, factorial);
+    }
+    return 0;
+}
+
+
+// Prime or Not
+#include <stdio.h>
+
+int main() {
+    int num, isPrime = 1;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    if (num <= 1) {
+        isPrime = 0;  // 0 and 1 are not prime
+    } else {
+        for (int i = 2; i * i <= num; i++) {  
+            if (num % i == 0) {
+                isPrime = 0;  // Not a prime if divisible
+                break;
+            }
+        }
+    }
+
+    if (isPrime) {
+        printf("%d is a prime number.\n", num);
+    } else {
+        printf("%d is not a prime number.\n", num);
+    }
+
+    return 0;
+}
+
+// Array of pointers
+#include <stdio.h>
+
+int main() {
+    int a = 10, b = 20, c = 30;
+    int *arr[3] = {&a, &b, &c};  // Array of pointers
+
+    // Access values through pointers
+    for (int i = 0; i < 3; i++) {
+        printf("%d ", *arr[i]);
+    }
+
+    return 0;
+}
+
+// Pointer to Array
+#include <stdio.h>
+
+int main() {
+    int arr[5] = {10, 20, 30, 40, 50};
+    int *ptr = arr;  // Pointer to the first element of the array
+
+    // Access elements using pointer
+    for (int i = 0; i < 5; i++) {
+        printf("Element %d: %d\n", i, *(ptr + i));
+    }
+
+    return 0;
+}
+
+// Fibo w and w/o recursion
+#include <stdio.h>
+
+int fibonacci(int n) {
+    if (n <= 1) 
+        return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    int n;
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+
+    printf("Fibonacci sequence: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", fibonacci(i));
+    }
+    return 0;
+}
+
+
+#include <stdio.h>
+int main() {
+    int n, first = 0, second = 1, next;
+
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+
+    printf("%d %d ", first, second); // Print the first two terms
+
+    for (int i = 2; i < n; i++) {
+        next = first + second;
+        printf("%d ", next);
+        first = second;
+        second = next;
+    }
+
+    return 0;
+}
+
+// Count vowels and consonants 
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    int vowels = 0, consonants = 0;
+
+    printf("Enter a string: ");
+    scanf(" %[^\n]", str); // Reads string with spaces
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        char ch = str[i];
+
+        if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ||  
+                ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U') {
+                vowels++;
+            } else {
+                consonants++;
+            }
+        }
+    }
+
+    printf("Vowels: %d\n", vowels);
+    printf("Consonants: %d\n", consonants);
+
+    return 0;
+}
+
+// enum default and custom
+#include <stdio.h>
+enum Day { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY };
+int main() {
+    enum Day today = WEDNESDAY;
+    printf("Today is day number: %d\n", today);
+    if (today == WEDNESDAY) {
+        printf("Mid-week grind!\n");
+    }
+
+    return 0;
+}
+
+#include <stdio.h>
+enum Level {
+    LOW = 1,  
+    MEDIUM = 5,  
+    HIGH = 10
+};
+
+int main() {
+    enum Level danger = HIGH;
+
+    printf("Danger level: %d\n", danger);
+
+    if (danger == HIGH) {
+        printf("Warning! High danger level.\n");
+    }
+
+    return 0;
+}
+
+// 2022
+#include <stdio.h>
+struct stud {
+    char name[50];
+    int marks[3];
+    int total;
+};
+int main() {
+    int n;
+    printf("Enter the number of students: ");
+    scanf("%d", &n);
+    struct stud s[n];
+    for (int i = 0; i < n; i++) {
+        s[i].total = 0;
+        printf("\nEnter details for Student %d:\n", i + 1);
+        printf("Name: ");
+        scanf("%s", s[i].name);
+        
+        for (int j = 0; j < 3; j++) {
+            printf("Marks in subject %d: ", j + 1);
+            scanf("%d", &s[i].marks[j]);
+            s[i].total += s[i].marks[j];
+        }
+    }
+    // Displaying marks statement
+    printf("\nStudent Marks Statement:\n");
+    printf("-------------------------------------\n");
+    printf("Name\tSub 1\tSub 2\tSub 3\tTotal\n");
+    printf("-------------------------------------\n");
+    for (int i = 0; i < n; i++)
+        printf("%s\t%d\t\t%d\t\t%d\t\t%d\n", s[i].name, s[i].marks[0], s[i].marks[1], s[i].marks[2], s[i].total);
+    return 0;
+}
+
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    FILE *fp;
+    int count = 0;
+
+    printf("Enter a string: ");
+    gets(str);
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' ||
+            str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U') {
+            count++;
+        }
+    }
+
+    fp = fopen("count.txt", "w");
+    fprintf(fp, "Number of vowels: %d\n", count);
+    fclose(fp);
+
+    printf("Vowel count written to 'count.txt'.\n");
+
+    return 0;
+}
+
+#include <stdio.h>
+
+int main() {
+    char str1[100], str2[100];
+    int i;
+
+    printf("Enter a string: ");
+    gets(str1);
+    // Copying string without strcpy
+    for (i = 0; str1[i] != '\0'; i++) {
+        str2[i] = str1[i];
+    }
+    str2[i] = '\0'; // Null-terminate the copied string
+    printf("Copied string: %s\n", str2);
+    return 0;
+}
+
+#include <stdio.h>
+int main() {
+    char S1[50], S2[50], S3[100];
+    int i = 0, j = 0;
+
+    // Reading strings
+    printf("Enter first string (S1): ");
+    gets(S1);
+    printf("Enter second string (S2): ");
+    gets(S2);
+
+    // Copy S1 to S3
+    while (S1[i] != '\0') {
+        S3[i] = S1[i];
+        i++;
+    }
+    // Add a space between the strings
+    S3[i] = ' ';
+    i++;
+    // Copy S2 to S3
+    while (S2[j] != '\0') {
+        S3[i] = S2[j];
+        i++;
+        j++;
+    }
+    S3[i] = '\0';
+    printf("Concatenated string (S3): %s\n", S3);
+    return 0;
+}
+#include <stdio.h>
+#include <string.h>
+
+struct stud {
+    int rollNo;
+    char name[50];
+    float marks;
+    char grade;
+};
+
+int main() {
+    int n, i;
+    char searchName[50];
+    printf("Enter number of students: ");
+    scanf("%d", &n);
+    struct stud s[n];
+    for (i = 0; i < n; i++) {
+        printf("Enter roll no, name, marks, and grade for student %d:\n", i + 1);
+        scanf("%d", &s[i].rollNo);
+        scanf(" %[^\n]", s[i].name);  // Read full name
+        scanf("%f %c", &s[i].marks, &s[i].grade);
+    }
+
+    printf("\nEnter student name to search marks: ");
+    scanf(" %[^\n]", searchName);
+
+    for (i = 0; i < n; i++) {
+        if (strcmp(s[i].name, searchName) == 0) {
+            printf("Marks of %s: %.2f\n", s[i].name, s[i].marks);
+            return 0;
+        }
+    }
+    printf("Student not found!\n");
+    return 0;
+}
+#include <stdio.h>
+
+struct Date {
+    int day;
+    int month;
+    int year;
+};
+
+struct Employee {
+    int empCode;
+    char name[50];
+    float salary;
+    int deptNo;
+    struct Date doj;
+};
+
+int main() {
+    int n, i; 
+    printf("Enter the number of employees: ");
+    scanf("%d", &n);
+    struct Employee emp[n];
+    // Storing employee details
+    for (i = 0; i < n; i++) {
+        printf("\nEnter details for employee %d (Code Name Salary DeptNo DD MM YYYY):\n", i + 1);
+        scanf("%d %s %f %d %d %d %d", 
+              &emp[i].empCode, emp[i].name, &emp[i].salary, &emp[i].deptNo, 
+              &emp[i].doj.day, &emp[i].doj.month, &emp[i].doj.year);
+    }
+    // Displaying employee details
+    printf("\nEmployee Details:\n");
+    for (i = 0; i < n; i++) {
+        printf("\nEmployee %d:\n", i + 1);
+        printf("Code: %d\n", emp[i].empCode);
+        printf("Name: %s\n", emp[i].name);
+        printf("Salary: %.2f\n", emp[i].salary);
+        printf("Department No: %d\n", emp[i].deptNo);
+        printf("Date of Join: %02d-%02d-%04d\n", emp[i].doj.day, emp[i].doj.month, emp[i].doj.year);
+    }
+
+    return 0;
+}
+
+#include <stdio.h>
+
+int main() {
+    FILE *fp;
+    char ch;
+    long length;
+    // Open the file in read mode
+    fp = fopen("input.txt", "r");
+    if (fp == NULL) {
+        printf("Error opening file.\n");
+        return 1;
+    }
+    // Move the file pointer to the end of the file
+    fseek(fp, 0, SEEK_END);
+    length = ftell(fp);
+    // Read the file in reverse order
+    printf("File contents in reverse order:\n");
+    for (long i = length - 1; i >= 0; i--) {
+        fseek(fp, i, SEEK_SET);
+        ch = fgetc(fp);
+        putchar(ch);
+    }
+    fclose(fp);
+    return 0;
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int *ptr;
+    int n, i;
+    // Ask user for number of elements
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    // 1. malloc
+    ptr = (int *)malloc(n * sizeof(int));
+
+    if (ptr == NULL) {
+        printf("Memory not allocated.\n");
+        return 1;
+    }
+
+    printf("Memory successfully allocated using malloc.\n");
+
+    // Take input
+    for (i = 0; i < n; i++)
+        scanf("%d", &ptr[i]); // (p+i)
+    // Print array
+    printf("Elements: ");
+    for (i = 0; i < n; i++)
+        printf("%d ", ptr[i]); // *(p+i)
+    printf("\n");
+
+    // 2. realloc
+    printf("Enter new size: ");
+    scanf("%d", &n);
+    ptr = (int *)realloc(ptr, n * sizeof(int));
+
+    if (ptr == NULL) {
+        printf("Memory not reallocated.\n");
+        return 1;
+    }
+
+    printf("Memory successfully reallocated using realloc.\n");
+
+    // Initialize new elements
+    for (i = 0; i < n; i++) {
+        ptr[i] = i + 1;
+    }
+    // Print new array
+    printf("Updated elements: ");
+    for (i = 0; i < n; i++) {
+        printf("%d ", ptr[i]);
+    }
+    printf("\n");
+    // 3. free
+    free(ptr);
+    printf("Memory successfully freed.\n");
+
+    return 0;
+}
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    char *ptr;
+    int count = 0;
+    // Input the string
+    printf("Enter a string: ");
+    gets(str); // Using gets to take input
+    ptr = str; // Pointer points to the string
+    // Traverse the string using pointer
+    while (*ptr != '\0') {
+        // Check for vowels
+        if (*ptr == 'a' || *ptr == 'e' || *ptr == 'i' || *ptr == 'o' || *ptr == 'u' ||
+            *ptr == 'A' || *ptr == 'E' || *ptr == 'I' || *ptr == 'O' || *ptr == 'U') {
+            count++;
+        }
+        ptr++; // Move pointer to next character
+    }
+    // Print the result
+    printf("Number of vowels: %d\n", count);
+    return 0;
+}
+
+#include <stdio.h>
+#include <ctype.h>
+int main() {
+    FILE *inputFile, *outputFile;
+    char ch;
+    inputFile = fopen("input.txt", "r");
+    outputFile = fopen("output.txt", "w");
+    if (inputFile == NULL || outputFile == NULL) {
+        printf("Error opening file.\n");
+        return 1;
+    }
+    while ((ch = fgetc(inputFile)) != EOF) {
+        if (islower(ch)) {
+            ch = toupper(ch);  // Convert lowercase to uppercase
+        }
+        fputc(ch, outputFile);  // Write to output file
+    }
+    printf("File copied with lowercase letters converted to uppercase.\n");
+    fclose(inputFile);
+    fclose(outputFile);
+
+    return 0;
+}
+
+#include <stdio.h>
+struct Status {
+    unsigned int isOnline : 1;   // 1 bit for online status (0 or 1)
+    unsigned int isAdmin  : 1;   // 1 bit for admin status (0 or 1)
+    unsigned int errorCode : 3;  // 3 bits for error codes (0-7)
+};
+
+int main() {
+    struct Status user;
+
+    user.isOnline = 1;
+    user.isAdmin = 0;
+    user.errorCode = 5;
+
+    printf("User Status:\n");
+    printf("Online: %u\n", user.isOnline);
+    printf("Admin: %u\n", user.isAdmin);
+    printf("Error Code: %u\n", user.errorCode);
+
+    return 0;
+}
+
+// Storage Classes
+#include <stdio.h>
+int main() {
+    auto int x = 10;  // Local variable with automatic storage
+    printf("Auto: %d\n", x);
+    return 0;
+}
+#include <stdio.h>
+int main() {
+    register int count = 5;  // Fast access, no address (&count)  
+    printf("Register: %d\n", count);
+    return 0;
+}
+#include <stdio.h>
+void countCalls() {
+    static int count = 0;  // Persists across function calls
+    count++;
+    printf("Static (Local): %d\n", count);
+}
+int main() {
+    countCalls();
+    countCalls();
+    return 0;
+}
+#include <stdio.h>
+static int globalVar = 100;  // Accessible only in this file
+int main() {
+    printf("Static (Global): %d\n", globalVar);
+    return 0;
+}
+#include <stdio.h>
+int globalVar = 50;  // Global variable definition
+// 2nd file
+#include <stdio.h>
+extern int globalVar;  // Access globalVar from file1
+int main() {
+    printf("Extern: %d\n", globalVar);
+    return 0;
+}
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[] = "Hello, World!";
+    char *pos;
+
+    // Using strchr to find the first occurrence of a character
+    pos = strchr(str, 'W');
+    if (pos != NULL)
+        printf("Character 'W' found at position: %ld\n", pos - str + 1);
+    else
+        printf("Character 'W' not found.\n");
+    // Using strstr to find a substring
+    pos = strstr(str, "World");
+    if (pos != NULL)
+        printf("Substring 'World' found at position: %ld\n", pos - str + 1);
+    else
+        printf("Substring 'World' not found.\n");
+    return 0;
+}
+
+
 // End
 
 
